@@ -1,0 +1,232 @@
+@font-face {
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/assets/fonts/PlayfairDisplay-Variable.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "General Sans";
+  font-style: normal;
+  font-weight: 100 700;
+  font-display: swap;
+  src: url("/assets/fonts/GeneralSans-Variable.woff2") format("woff2");
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Frost Bit — Dark Luxury Dessert */
+    --background: 0.12 0.018 30;
+    --foreground: 0.96 0.01 80;
+
+    --card: 0.16 0.02 28;
+    --card-foreground: 0.96 0.01 80;
+
+    --popover: 0.14 0.018 28;
+    --popover-foreground: 0.96 0.01 80;
+
+    /* Warm gold primary */
+    --primary: 0.75 0.14 72;
+    --primary-foreground: 0.12 0.018 30;
+
+    /* Muted chocolate secondary */
+    --secondary: 0.22 0.025 28;
+    --secondary-foreground: 0.85 0.04 75;
+
+    --muted: 0.18 0.02 28;
+    --muted-foreground: 0.58 0.04 60;
+
+    /* Icy blue accent */
+    --accent: 0.65 0.12 218;
+    --accent-foreground: 0.96 0.01 80;
+
+    --destructive: 0.57 0.22 27;
+    --destructive-foreground: 0.96 0.01 80;
+
+    --border: 0.25 0.03 40;
+    --input: 0.22 0.025 35;
+    --ring: 0.75 0.14 72;
+
+    --radius: 0.75rem;
+
+    /* Chart colors */
+    --chart-1: 0.75 0.14 72;
+    --chart-2: 0.65 0.12 218;
+    --chart-3: 0.68 0.18 350;
+    --chart-4: 0.7 0.18 130;
+    --chart-5: 0.62 0.14 50;
+
+    /* Sidebar */
+    --sidebar: 0.14 0.018 28;
+    --sidebar-foreground: 0.96 0.01 80;
+    --sidebar-primary: 0.75 0.14 72;
+    --sidebar-primary-foreground: 0.12 0.018 30;
+    --sidebar-accent: 0.18 0.02 28;
+    --sidebar-accent-foreground: 0.85 0.04 75;
+    --sidebar-border: 0.25 0.03 40;
+    --sidebar-ring: 0.75 0.14 72;
+
+    /* Custom Frost Bit tokens */
+    --gold: 0.75 0.14 72;
+    --gold-dim: 0.55 0.1 72;
+    --ice: 0.65 0.12 218;
+    --chocolate: 0.12 0.018 30;
+    --cream: 0.94 0.03 80;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "General Sans", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: "Playfair Display", serif;
+  }
+
+  .text-gold {
+    color: oklch(var(--gold));
+  }
+
+  .text-ice {
+    color: oklch(var(--ice));
+  }
+
+  .bg-gold {
+    background-color: oklch(var(--gold));
+  }
+
+  .border-gold {
+    border-color: oklch(var(--gold));
+  }
+
+  .glow-gold {
+    box-shadow: 0 0 20px oklch(var(--gold) / 0.3), 0 0 60px
+      oklch(var(--gold) / 0.12);
+  }
+
+  .glow-ice {
+    box-shadow: 0 0 20px oklch(var(--ice) / 0.3), 0 0 60px
+      oklch(var(--ice) / 0.12);
+  }
+
+  .glow-text-gold {
+    text-shadow: 0 0 30px oklch(var(--gold) / 0.5), 0 0 80px
+      oklch(var(--gold) / 0.2);
+  }
+
+  .frost-glass {
+    background: oklch(0.2 0.025 220 / 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid oklch(var(--ice) / 0.2);
+  }
+
+  .gold-glass {
+    background: oklch(var(--gold) / 0.06);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid oklch(var(--gold) / 0.25);
+  }
+
+  .noise-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+/* Can rotation animation */
+@keyframes can-float {
+  0%,
+  100% {
+    transform: translateY(0px) rotateY(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotateY(5deg);
+  }
+}
+
+.can-float {
+  animation: can-float 4s ease-in-out infinite;
+}
+
+/* Fade up entrance */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.7s ease-out forwards;
+}
+
+.animate-delay-100 {
+  animation-delay: 0.1s;
+}
+.animate-delay-200 {
+  animation-delay: 0.2s;
+}
+.animate-delay-300 {
+  animation-delay: 0.3s;
+}
+.animate-delay-400 {
+  animation-delay: 0.4s;
+}
+.animate-delay-500 {
+  animation-delay: 0.5s;
+}
+.animate-delay-600 {
+  animation-delay: 0.6s;
+}
+
+.opacity-0 {
+  opacity: 0;
+}
+
+/* Shimmer for cards */
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    oklch(var(--gold) / 0.15) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2.5s linear infinite;
+}
