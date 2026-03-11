@@ -8,7 +8,7 @@ const FLAVOURS = [
     id: 1,
     name: "Chocolate Oreo",
     tagline: "Dark. Crunchy. Sinful.",
-    image: "/assets/generated/frost-can-chocolate-oreo.dim_600x700.jpg",
+    image: "/assets/uploads/11-1.png",
     gradient:
       "from-[oklch(0.22_0.06_30)] via-[oklch(0.18_0.04_40)] to-[oklch(0.14_0.02_28)]",
     accentColor: "oklch(0.55 0.08 50)",
@@ -18,7 +18,7 @@ const FLAVOURS = [
     id: 2,
     name: "Mango Cream",
     tagline: "Tropical. Lush. Dreamy.",
-    image: "/assets/generated/frost-can-mango-cream.dim_600x700.jpg",
+    image: "/assets/uploads/22-2.png",
     gradient:
       "from-[oklch(0.35_0.12_70)] via-[oklch(0.25_0.08_60)] to-[oklch(0.14_0.02_28)]",
     accentColor: "oklch(0.72 0.18 72)",
@@ -28,7 +28,7 @@ const FLAVOURS = [
     id: 3,
     name: "Strawberry Delight",
     tagline: "Sweet. Bold. Blissful.",
-    image: "/assets/generated/frost-can-strawberry-delight.dim_600x700.jpg",
+    image: "/assets/uploads/44-3.png",
     gradient:
       "from-[oklch(0.45_0.18_15)] via-[oklch(0.28_0.10_20)] to-[oklch(0.14_0.02_28)]",
     accentColor: "oklch(0.68 0.22 15)",
@@ -38,7 +38,7 @@ const FLAVOURS = [
     id: 4,
     name: "Cookies & Cream",
     tagline: "Classic. Creamy. Iconic.",
-    image: "/assets/generated/frost-can-cookies-cream.dim_600x700.jpg",
+    image: "/assets/uploads/33-4.png",
     gradient:
       "from-[oklch(0.30_0.02_270)] via-[oklch(0.20_0.02_250)] to-[oklch(0.14_0.02_28)]",
     accentColor: "oklch(0.80 0.04 270)",
@@ -61,9 +61,9 @@ const FEATURES = [
   },
   {
     icon: "⬡",
-    title: "Priced for You",
-    subtitle: "Made for Everyone",
-    desc: "Luxury that doesn't break the bank. At ₹59 a can, Frost Bit is designed for students, dessert lovers, and anyone who believes good taste is a right, not a privilege.",
+    title: "Made for Everyone",
+    subtitle: "Accessible Luxury",
+    desc: "Frost Bit is crafted for students, dessert lovers, and anyone who believes good taste is a right, not a privilege.",
   },
 ];
 
@@ -231,17 +231,6 @@ function FlavourCard({
               "linear-gradient(to top, oklch(0.12 0.018 30) 0%, transparent 60%)",
           }}
         />
-        {/* Price badge */}
-        <div
-          className="absolute top-4 right-4 font-display text-sm font-bold px-3 py-1 rounded-full"
-          style={{
-            background: "oklch(0.75 0.14 72 / 0.92)",
-            color: "oklch(0.12 0.018 30)",
-            letterSpacing: "0.02em",
-          }}
-        >
-          ₹59
-        </div>
         {/* Emoji badge */}
         <div className="absolute top-4 left-4 text-2xl">{flavour.emoji}</div>
       </div>
@@ -629,7 +618,6 @@ function HeroSection({ scrollY }: { scrollY: number }) {
             >
               {[
                 { num: "4", label: "Flavours" },
-                { num: "₹59", label: "Per Can" },
                 { num: "100%", label: "Premium" },
               ].map(({ num, label }) => (
                 <div key={label} className="text-center">
@@ -750,16 +738,6 @@ function FlavoursSection() {
             />
           ))}
         </div>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.7, delay: 0.6 }}
-          className="text-center mt-10 text-sm font-semibold tracking-widest uppercase"
-          style={{ color: "oklch(0.75 0.14 72 / 0.7)" }}
-        >
-          All flavours · ₹59 only
-        </motion.p>
       </div>
     </section>
   );
@@ -909,24 +887,21 @@ function ExperienceSection() {
                 of texture and colour — and you're always front-row.
               </p>
               <div className="flex flex-wrap gap-3">
-                {[
-                  "Transparent Can",
-                  "Hand-Layered",
-                  "Fresh Daily",
-                  "₹59 Only",
-                ].map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-xs font-semibold px-3 py-1.5 rounded-full"
-                    style={{
-                      background: "oklch(0.65 0.12 218 / 0.12)",
-                      border: "1px solid oklch(0.65 0.12 218 / 0.3)",
-                      color: "oklch(0.75 0.10 210)",
-                    }}
-                  >
-                    {tag}
-                  </span>
-                ))}
+                {["Transparent Can", "Hand-Layered", "Fresh Daily"].map(
+                  (tag) => (
+                    <span
+                      key={tag}
+                      className="text-xs font-semibold px-3 py-1.5 rounded-full"
+                      style={{
+                        background: "oklch(0.65 0.12 218 / 0.12)",
+                        border: "1px solid oklch(0.65 0.12 218 / 0.3)",
+                        color: "oklch(0.75 0.10 210)",
+                      }}
+                    >
+                      {tag}
+                    </span>
+                  ),
+                )}
               </div>
             </div>
           </div>
@@ -1207,7 +1182,7 @@ function ContactSection() {
             className="text-xs tracking-wider"
             style={{ color: "oklch(0.38 0.03 50)" }}
           >
-            Ice Cream in a Can · ₹59
+            Ice Cream in a Can
           </p>
         </div>
       </footer>
